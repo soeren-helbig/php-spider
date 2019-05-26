@@ -20,13 +20,13 @@ class MimeTypeRegexFilter implements PostFetchFilterInterface
     public function match(Resource $resource)
     {
         $contentType = $resource->getResponse()->getHeaderLine('Content-Type');
-	
-	foreach($this->allowedMimeTypes as $allowedMimeType) {
-	    if (preg_match($allowdMimeTypes, $contentType) === 1) {
-	        return false;
-	    }
-	}
 
-	return true;
+        foreach($this->allowedMimeTypes as $allowedMimeType) {
+            if (preg_match($allowedMimeType, $contentType) === 1) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
